@@ -67,7 +67,7 @@ a{color:inherit;text-decoration:none}
 /* ============ HERO ============ */
 .hero{
   position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--cream);overflow:hidden;background:url('../images/hero.jpg') center/cover no-repeat;
+  color:var(--cream);overflow:hidden;background:url('../images/herobackground.png') center/cover no-repeat;
 }
 .hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,12,.55),rgba(8,9,12,.35) 42%,rgba(8,9,12,.75))}
 .hero__content{position:relative;z-index:2;max-width:840px;padding:0 24px}
@@ -81,14 +81,17 @@ a{color:inherit;text-decoration:none}
 
 /* ============ SECTIONS ============ */
 .section{position:relative;padding:clamp(72px,10vw,132px) 0;overflow:hidden}
-.section--marble{
-  background:#0a0a0c url('../images/marble.svg') center/cover fixed;
+.section--marble{background-color:#0a0a0c}
+.parallax-bg{
+  position:absolute;left:0;right:0;top:-14%;height:128%;z-index:0;pointer-events:none;
+  background:url('../images/backgrounds.jpg') center center/cover no-repeat;
+  will-change:transform;
 }
 .section--marble::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 80% at 50% 0%,rgba(0,0,0,0) 40%,rgba(0,0,0,.5) 100%);
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:radial-gradient(120% 85% at 50% 0%,rgba(8,8,10,.35) 0%,rgba(8,8,10,.62) 100%);
 }
-.section--marble .container{position:relative;z-index:1}
+.section--marble .container{position:relative;z-index:2}
 
 .section__head{max-width:700px;margin:0 auto clamp(40px,6vw,64px);text-align:center}
 .section__title{font-family:var(--serif);font-weight:500;letter-spacing:.01em;font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.08;color:var(--cream)}
@@ -280,7 +283,6 @@ a.contact-tile:hover{background:rgba(28,31,40,.85);transform:translateY(-5px);bo
   .about{grid-template-columns:1fr;gap:34px}
   .about__photo{max-width:440px;margin:0 auto}
   .contacts__grid{grid-template-columns:repeat(2,1fr)}
-  .section--marble{background-attachment:scroll}
 }
 @media (max-width:560px){
   :root{--nav-h:64px}

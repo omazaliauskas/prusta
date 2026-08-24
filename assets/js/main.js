@@ -141,6 +141,28 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
 
+/* ============ PARALLAX BACKGROUNDS ============ */
+const parallaxSecs = Array.from(document.querySelectorAll('.section--marble'))
+  .map(sec => ({ sec, bg: sec.querySelector('.parallax-bg') }))
+  .filter(o => o.bg);
+function runParallax(){
+  const vh = window.innerHeight;
+  for (const { sec, bg } of parallaxSecs){
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < -80 || r.top > vh + 80) continue;
+    const p = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1..1 across viewport
+    const shift = p * sec.offsetHeight * 0.12;
+    bg.style.transform = `translate3d(0, ${shift.toFixed(1)}px, 0)`;
+  }
+}
+let pTicking = false;
+window.addEventListener('scroll', () => {
+  if (!pTicking){ requestAnimationFrame(() => { runParallax(); pTicking = false; }); pTicking = true; }
+}, { passive:true });
+window.addEventListener('resize', runParallax);
+window.addEventListener('load', runParallax);
+runParallax();
+
 /* ============ CONTACT FORM ============ */
 const fileInput = document.getElementById('fileInput');
 const fileText = document.getElementById('fileText');
