@@ -142,9 +142,9 @@ lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightb
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
 
 /* ============ PARALLAX BACKGROUNDS ============ */
-const parallaxSecs = Array.from(document.querySelectorAll('.section--marble'))
-  .map(sec => ({ sec, bg: sec.querySelector('.parallax-bg') }))
-  .filter(o => o.bg);
+const parallaxSecs = Array.from(document.querySelectorAll('.parallax-bg'))
+  .map(bg => ({ sec: bg.parentElement, bg }))
+  .filter(o => o.sec);
 function runParallax(){
   const vh = window.innerHeight;
   for (const { sec, bg } of parallaxSecs){
