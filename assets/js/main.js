@@ -129,7 +129,7 @@ const fileText = document.getElementById('fileText');
 if (fileInput){
   fileInput.addEventListener('change', () => {
     const n = fileInput.files.length;
-    if (n === 0) fileText.textContent = 'Pasirinkite failus (planai, nuotraukos)';
+    if (n === 0) fileText.textContent = 'Pasirinkite failus (brėžiniai, nuotraukos)';
     else if (n === 1) fileText.textContent = fileInput.files[0].name;
     else fileText.textContent = n + ' failai pasirinkti';
   });
@@ -145,7 +145,7 @@ if (contactForm){
     contactForm.querySelector('.form-submit').textContent = 'Užklausa paruošta';
     setTimeout(() => {
       contactForm.reset();
-      if (fileText) fileText.textContent = 'Pasirinkite failus (planai, nuotraukos)';
+      if (fileText) fileText.textContent = 'Pasirinkite failus (brėžiniai, nuotraukos)';
     }, 400);
   });
 }
