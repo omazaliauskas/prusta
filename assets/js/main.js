@@ -15,7 +15,7 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 /* ============ CAROUSEL ============ */
 function buildCarousel(root){
   const track = root.querySelector('.carousel__track');
-  const slides = Array.from(track.children);
+  const allSlides = Array.from(track.children);
   const prev = root.querySelector('.carousel__btn--prev');
   const next = root.querySelector('.carousel__btn--next');
   const dotsWrap = root.querySelector('.carousel__dots');
@@ -29,21 +29,28 @@ function buildCarousel(root){
   let index = 0;
   let maxIndex = 0;
 
-  function computePerView(){
+  function visibleSlides(){ return allSlides.filter(s => s.style.display !== 'none'); }
+
+  function computePerView(count){
     const w = window.innerWidth;
     if (w < 768) { perView = dMobile; gap = 16; }
     else if (w < 1024) { perView = dTablet; gap = 20; }
     else { perView = dDesktop; gap = 24; }
-    perView = Math.min(perView, slides.length);
+    perView = Math.min(perView, Math.max(1, count));
+  }
+
+  function slideW(){
+    const vpWidth = track.parentElement.clientWidth;
+    return (vpWidth - gap * (perView - 1)) / perView;
   }
 
   function layout(){
-    computePerView();
-    const vpWidth = track.parentElement.clientWidth;
-    const slideWidth = (vpWidth - gap * (perView - 1)) / perView;
+    const vis = visibleSlides();
+    computePerView(vis.length);
+    const sw = slideW();
     track.style.gap = gap + 'px';
-    slides.forEach(s => { s.style.width = slideWidth + 'px'; });
-    maxIndex = Math.max(0, slides.length - perView);
+    allSlides.forEach(s => { s.style.width = sw + 'px'; });
+    maxIndex = Math.max(0, vis.length - perView);
     if (index > maxIndex) index = maxIndex;
     buildDots();
     update();
@@ -52,8 +59,7 @@ function buildCarousel(root){
   function buildDots(){
     if (!dotsWrap) return;
     dotsWrap.innerHTML = '';
-    const pages = maxIndex + 1;
-    for (let i = 0; i < pages; i++){
+    for (let i = 0; i <= maxIndex; i++){
       const b = document.createElement('button');
       b.type = 'button';
       b.addEventListener('click', () => { index = i; update(); });
@@ -62,9 +68,7 @@ function buildCarousel(root){
   }
 
   function update(){
-    const vpWidth = track.parentElement.clientWidth;
-    const slideWidth = (vpWidth - gap * (perView - 1)) / perView;
-    track.style.transform = `translateX(${-(slideWidth + gap) * index}px)`;
+    track.style.transform = `translateX(${-(slideW() + gap) * index}px)`;
     if (prev) prev.disabled = index <= 0;
     if (next) next.disabled = index >= maxIndex;
     if (dotsWrap){
@@ -93,9 +97,23 @@ function buildCarousel(root){
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 150); });
   window.addEventListener('load', layout);
+  root.__carousel = { layout, reset(){ index = 0; } };
   layout();
 }
 document.querySelectorAll('.carousel').forEach(buildCarousel);
+
+/* ============ PROJECT CATEGORY FILTER ============ */
+const projCarousel = document.getElementById('projektaiCarousel');
+const filters = document.querySelectorAll('.filter');
+filters.forEach(btn => btn.addEventListener('click', () => {
+  filters.forEach(b => b.classList.remove('is-active'));
+  btn.classList.add('is-active');
+  const cat = btn.dataset.filter;
+  projCarousel.querySelectorAll('.card--project').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+  if (projCarousel.__carousel){ projCarousel.__carousel.reset(); projCarousel.__carousel.layout(); }
+}));
 
 /* ============ LIGHTBOX ============ */
 const lightbox = document.getElementById('lightbox');

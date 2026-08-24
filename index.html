@@ -50,56 +50,75 @@
       <p class="section__desc">Namai, sodybos, komerciniai objektai ir interjerai, sukurti skirtingo mastelio ir biudžeto projektams visoje Lietuvoje.</p>
     </div>
 
-    <div class="carousel reveal" data-desktop="3" data-tablet="2" data-mobile="2">
+    <div class="filters reveal" role="tablist" aria-label="Projektų kategorijos">
+      <button class="filter is-active" data-filter="all" role="tab">Visi</button>
+      <button class="filter" data-filter="residential" role="tab">Gyvenamieji</button>
+      <button class="filter" data-filter="commercial" role="tab">Komercija</button>
+      <button class="filter" data-filter="construction" role="tab">Statyba</button>
+    </div>
+
+    <div class="carousel reveal" id="projektaiCarousel" data-desktop="3" data-tablet="2" data-mobile="2">
       <div class="carousel__viewport">
         <div class="carousel__track">
-          <article class="card card--project" data-img="assets/images/work-01.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-01.jpg">
             <div class="card__media"><img src="assets/images/work-01.jpg" alt="Varinis namas Vilniuje" loading="lazy" /></div>
-            <div class="card__body"><h3>Varinis namas</h3><p>Gyvenamoji architektūra, Vilnius</p></div>
+            <div class="card__body"><h3>Varinis namas</h3><p>Gyvenamieji, Vilnius</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-02.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-02.jpg">
             <div class="card__media"><img src="assets/images/work-02.jpg" alt="Whispering Lightscape" loading="lazy" /></div>
-            <div class="card__body"><h3>Whispering Lightscape</h3><p>Gyvenamoji architektūra</p></div>
+            <div class="card__body"><h3>Whispering Lightscape</h3><p>Gyvenamieji</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-03.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-03.jpg">
             <div class="card__media"><img src="assets/images/work-03.jpg" alt="Dive in to the Green" loading="lazy" /></div>
-            <div class="card__body"><h3>Dive in to the Green</h3><p>Gyvenamoji architektūra</p></div>
+            <div class="card__body"><h3>Dive in to the Green</h3><p>Gyvenamieji</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-04.jpg">
-            <div class="card__media"><img src="assets/images/work-04.jpg" alt="Sodyba prie ežero" loading="lazy" /></div>
-            <div class="card__body"><h3>Sodyba prie ežero</h3><p>Gyvenamoji architektūra</p></div>
+          <article class="card card--project" data-cat="commercial" data-img="assets/images/work-13.jpg">
+            <div class="card__media"><img src="assets/images/work-13.jpg" alt="Vituko durų salonas" loading="lazy" /></div>
+            <div class="card__body"><h3>Vituko durų salonas</h3><p>Komercija</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-05.jpg">
-            <div class="card__media"><img src="assets/images/work-05.jpg" alt="House in the Woods" loading="lazy" /></div>
-            <div class="card__body"><h3>House in the Woods</h3><p>Gyvenamoji architektūra</p></div>
+          <article class="card card--project" data-cat="commercial" data-img="assets/images/work-14.jpg">
+            <div class="card__media"><img src="assets/images/work-14.jpg" alt="SV logistic biuras" loading="lazy" /></div>
+            <div class="card__body"><h3>SV logistic biuras</h3><p>Komercija</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-06.jpg">
-            <div class="card__media"><img src="assets/images/work-06.jpg" alt="Villa Pjievė" loading="lazy" /></div>
-            <div class="card__body"><h3>Villa Pjievė</h3><p>Gyvenamoji architektūra</p></div>
+          <article class="card card--project" data-cat="commercial" data-img="assets/images/work-15.jpg">
+            <div class="card__media"><img src="assets/images/work-15.jpg" alt="INSPIRED UM biuras" loading="lazy" /></div>
+            <div class="card__body"><h3>INSPIRED UM biuras</h3><p>Komercija</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-07.jpg">
+          <article class="card card--project" data-cat="construction" data-img="assets/images/work-07.jpg">
             <div class="card__media"><img src="assets/images/work-07.jpg" alt="Three Pines" loading="lazy" /></div>
             <div class="card__body"><h3>Three Pines</h3><p>Statyba</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-08.jpg">
+          <article class="card card--project" data-cat="construction" data-img="assets/images/work-08.jpg">
             <div class="card__media"><img src="assets/images/work-08.jpg" alt="Hanging in the Air" loading="lazy" /></div>
             <div class="card__body"><h3>Hanging in the Air</h3><p>Statyba</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-09.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-04.jpg">
+            <div class="card__media"><img src="assets/images/work-04.jpg" alt="Sodyba prie ežero" loading="lazy" /></div>
+            <div class="card__body"><h3>Sodyba prie ežero</h3><p>Gyvenamieji</p></div>
+          </article>
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-05.jpg">
+            <div class="card__media"><img src="assets/images/work-05.jpg" alt="House in the Woods" loading="lazy" /></div>
+            <div class="card__body"><h3>House in the Woods</h3><p>Gyvenamieji</p></div>
+          </article>
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-06.jpg">
+            <div class="card__media"><img src="assets/images/work-06.jpg" alt="Villa Pjievė" loading="lazy" /></div>
+            <div class="card__body"><h3>Villa Pjievė</h3><p>Gyvenamieji</p></div>
+          </article>
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-09.jpg">
             <div class="card__media"><img src="assets/images/work-09.jpg" alt="Home Full of Warmth" loading="lazy" /></div>
-            <div class="card__body"><h3>Home Full of Warmth</h3><p>Interjeras</p></div>
+            <div class="card__body"><h3>Home Full of Warmth</h3><p>Gyvenamieji, interjeras</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-10.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-10.jpg">
             <div class="card__media"><img src="assets/images/work-10.jpg" alt="Namas nr. 49, Vilnius" loading="lazy" /></div>
-            <div class="card__body"><h3>Namas nr. 49</h3><p>Gyvenamoji architektūra, Vilnius</p></div>
+            <div class="card__body"><h3>Namas nr. 49</h3><p>Gyvenamieji, Vilnius</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-11.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-11.jpg">
             <div class="card__media"><img src="assets/images/work-11.jpg" alt="Namas Tauragėje" loading="lazy" /></div>
-            <div class="card__body"><h3>Namas Tauragėje</h3><p>Gyvenamoji architektūra</p></div>
+            <div class="card__body"><h3>Namas Tauragėje</h3><p>Gyvenamieji</p></div>
           </article>
-          <article class="card card--project" data-img="assets/images/work-12.jpg">
+          <article class="card card--project" data-cat="residential" data-img="assets/images/work-12.jpg">
             <div class="card__media"><img src="assets/images/work-12.jpg" alt="Round We Go" loading="lazy" /></div>
-            <div class="card__body"><h3>Round We Go</h3><p>Gyvenamoji architektūra</p></div>
+            <div class="card__body"><h3>Round We Go</h3><p>Gyvenamieji</p></div>
           </article>
         </div>
       </div>
@@ -199,6 +218,72 @@
             <span class="card__step-num">5</span>
             <h3>Statyba ir priežiūra</h3>
             <p>Įgyvendiname ir prižiūrime darbus iki galutinio rezultato.</p>
+          </article>
+        </div>
+      </div>
+      <button class="carousel__btn carousel__btn--prev" aria-label="Ankstesnis">‹</button>
+      <button class="carousel__btn carousel__btn--next" aria-label="Kitas">›</button>
+      <div class="carousel__dots" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APDOVANOJIMAI ============ -->
+<section class="section section--marble" id="apdovanojimai">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Apdovanojimai</p>
+      <h2 class="section__title">Pripažinimas</h2>
+      <p class="section__desc">Nuo 1999 metų mūsų darbai vertinami Lietuvos ir tarptautiniuose architektūros bei dizaino konkursuose.</p>
+    </div>
+
+    <div class="carousel reveal" data-desktop="3" data-tablet="2" data-mobile="1">
+      <div class="carousel__viewport">
+        <div class="carousel__track">
+          <article class="card card--award">
+            <span class="award__year">2022</span>
+            <h3 class="award__title">Žvilgsnis į save</h3>
+            <p class="award__detail">Projektas „Namas Miškuose" tarp geriausių Lietuvos šiuolaikinės architektūros darbų.</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2021</span>
+            <h3 class="award__title">Auksinė paletė</h3>
+            <p class="award__detail">Ieva Prunskaitė apdovanota už lietuviško dizaino propagavimą.</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2020</span>
+            <h3 class="award__title">Geras dizainas</h3>
+            <p class="award__detail">I vieta baldų ir apšvietimo kategorijoje, projektas „Grojantis stalas".</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2019</span>
+            <h3 class="award__title">Building of the Year</h3>
+            <p class="award__detail">Nominacija kategorijoje „Refurbishment in architecture".</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2018</span>
+            <h3 class="award__title">Building of the Year</h3>
+            <p class="award__detail">Nominacijos kategorijose „Offices" ir „Housing".</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2017</span>
+            <h3 class="award__title">Idea-Tops</h3>
+            <p class="award__detail">International Space Design Awards nominacija už INSPIRED UM biurą.</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2015</span>
+            <h3 class="award__title">Interia Awards</h3>
+            <p class="award__detail">Apdovanojimas už geriausią užmiesčio namą Lietuvoje.</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">2007</span>
+            <h3 class="award__title">Vitruvijaus statulėlė</h3>
+            <p class="award__detail">Individualių namų architektūra, „Pripažintas tarp kolegų".</p>
+          </article>
+          <article class="card card--award">
+            <span class="award__year">1999</span>
+            <h3 class="award__title">Knauf architektams</h3>
+            <p class="award__detail">I vieta už gražaus gyvenimo architektūrą.</p>
           </article>
         </div>
       </div>
@@ -342,6 +427,7 @@
       <a href="#projektai">Projektai</a>
       <a href="#paslaugos">Paslaugos</a>
       <a href="#procesas">Procesas</a>
+      <a href="#apdovanojimai">Apdovanojimai</a>
       <a href="#kontaktai">Kontaktai</a>
       <a href="#apie">Apie mus</a>
     </nav>
